@@ -1,0 +1,39 @@
+{
+	"name": "grunt-three-obj",
+	"version": "0.0.1",
+	"author": {
+		"name": "makesites",
+		"url": "http://makesites.org/"
+	},
+	"description": "[WIP] Grunt tasks for Three OBJ",
+	"homepage": "https://github.com/makesites/grunt-three-obj",
+	"keywords": [
+		"gruntplugin", "three", "obj", "minify", "json"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/makesites/grunt-three-obj.git"
+	},
+	"bugs": {
+		"url": "https://github.com/makesites/grunt-three-obj/issues"
+	},
+	"licenses": [
+		{
+		"type": "MIT",
+		"url": "http://makesites.org/licenses/MIT"
+		}
+	],
+	"main": "gruntfile.js",
+	"engines": {
+		"node": ">= 0.8.0"
+	},
+	"dependencies": {
+		"three-obj": "*"
+	},
+	"devDependencies": {
+		"grunt": "~0.4.0"
+	},
+	"peerDependencies": {
+		"grunt": "~0.4.0"
+	}
+}
