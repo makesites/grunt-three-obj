@@ -1,8 +1,8 @@
 // Minify with three-obj.
 // Source: https://github.com/makesites/three-obj
 
-var threeOBJ = require('three-obj'), 
-	fs = require('fs'), 
+var threeOBJ = require('three-obj'),
+	fs = require('fs'),
 	path = require("path");
 
 exports.init = function(grunt) {
@@ -11,23 +11,28 @@ exports.init = function(grunt) {
 
 	exports.parse = function(files, dir, options, callback) {
 		options = options || {};
-		
+
 		grunt.verbose.write('Converting with three-obj...');
 
 		var topLevel = null;
 		// destination file
 		var dest = "";
-		///var output = ...
 
 		// Grab and parse all source files
-		
 		async.forEach(files, function(file, cb) {
 		//files.forEach(function(file){
 			// find destination (error control?)
 			dest = path.normalize( __dirname +"/../../../../"+ dir ) + ( (file.match(/[^/]*$/) ).pop().replace(/\.[^/.]+$/, ".js") );
-			// normalize file path 
-			file = path.normalize( __dirname +"/../../../../"+ file )
-			
+			// normalize file path
+			file = path.normalize( __dirname +"/../../../../"+ file );
+			// check the destination:
+			if( grunt.file.exists(dest) ){
+				// ask for overwrite confirmation?
+			} else {
+				// create the destination file if not available (including nested folders)
+				grunt.file.write(dest, " ");
+			}
+			// execute the conversion
 			if( options.minify ){
 				topLevel = threeOBJ.minify(file, dest, function( data ){
 					//console.log( data );
@@ -46,7 +51,7 @@ exports.init = function(grunt) {
 			callback( dest );
 			return true;
 		});
-		
+
 		//return true;
 	};
 

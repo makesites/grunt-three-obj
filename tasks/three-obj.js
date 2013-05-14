@@ -32,7 +32,6 @@ module.exports = function(grunt) {
 				grunt.fail.warn(err);
 				return done(err);
 			}
-			//return grunt.fail.warn(err);
 
 			// Minify files, warn and fail on error.
 			var result;
