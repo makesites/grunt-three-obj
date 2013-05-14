@@ -36,8 +36,8 @@ module.exports = function(grunt) {
 			// Minify files, warn and fail on error.
 			var result;
 			try {
-				result = threeOBJ.parse(src, f.dest, options, function( file ){
-					grunt.log.writeln('File "' + file + '" created.');
+				result = threeOBJ.parse(src, f.dest, options, function(err){
+					grunt.log.writeln('Source "' + f.orig.src + '" parsed.');
 					if (options.report) {
 						contrib.minMaxInfo(result.min, result.max, options.report);
 					}

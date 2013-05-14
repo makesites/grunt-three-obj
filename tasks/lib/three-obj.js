@@ -15,17 +15,17 @@ exports.init = function(grunt) {
 		grunt.verbose.write('Converting with three-obj...');
 
 		var topLevel = null;
-		// destination file
-		var dest = "";
-
 		// Grab and parse all source files
 		async.forEach(files, function(file, cb) {
 		//files.forEach(function(file){
-			dir = findRelativePath(file, dir);
+			// destination file
+			var source = "",
+				dest = "";
+			dest = findRelativePath(file, dir);
 			// find destination (error control?)
-			dest = path.normalize( __dirname +"/../../../../"+ dir.replace(/\.[^/.]+$/, ".js") );
+			dest = path.normalize( __dirname +"/../../../../"+ dest.replace(/\.[^/.]+$/, ".js") );
 			// normalize file path
-			file = path.normalize( __dirname +"/../../../../"+ file );
+			source = path.normalize( __dirname +"/../../../../"+ file );
 			// check the destination:
 			if( grunt.file.exists(dest) ){
 				// ask for overwrite confirmation?
@@ -35,13 +35,16 @@ exports.init = function(grunt) {
 			}
 			// execute the conversion
 			if( options.minify ){
-				topLevel = threeOBJ.minify(file, dest, function( data ){
+				console.log("source", source);
+				topLevel = threeOBJ.minify(source, dest, function( data ){
 					//console.log( data );
+					grunt.log.writeln('Binary file "' + dest + '" created.');
 					return cb();
 				});
 			} else {
-				topLevel = threeOBJ.convert(file, dest, function( data ){
+				topLevel = threeOBJ.convert(source, dest, function( data ){
 					//console.log( data );
+					grunt.log.writeln('Ascii file "' + dest + '" created.');
 					return cb();
 				});
 			}
@@ -49,7 +52,7 @@ exports.init = function(grunt) {
 		}, function(error) {
 			//console.log("DONE!!!");
 			//done(!error);
-			callback( dest );
+			callback(error);
 			return true;
 		});
 
