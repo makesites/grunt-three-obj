@@ -20,7 +20,7 @@ grunt.loadNpmTasks('grunt-three-obj');
 Then specify your config:
 ```
 	grunt.initConfig({
-		three-obj: {
+		three_obj: {
 			options: {
 				/** @optional  - if true the files are converted to binary JSON */
 				minify: false
