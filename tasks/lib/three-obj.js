@@ -21,8 +21,9 @@ exports.init = function(grunt) {
 		// Grab and parse all source files
 		async.forEach(files, function(file, cb) {
 		//files.forEach(function(file){
+			dir = findRelativePath(file, dir);
 			// find destination (error control?)
-			dest = path.normalize( __dirname +"/../../../../"+ dir ) + ( (file.match(/[^/]*$/) ).pop().replace(/\.[^/.]+$/, ".js") );
+			dest = path.normalize( __dirname +"/../../../../"+ dir.replace(/\.[^/.]+$/, ".js") );
 			// normalize file path
 			file = path.normalize( __dirname +"/../../../../"+ file );
 			// check the destination:
@@ -57,3 +58,21 @@ exports.init = function(grunt) {
 
 	return exports;
 };
+
+// Helpers
+// - finde the relative path from location a in location b
+function findRelativePath(a, b){
+	var a = a.split("/"),
+		b = b.split("/");
+	// this will be the final path
+	var path = [];
+
+	for( var i in a ){
+		// follow the b dir until the same level
+		path.push( ( typeof b[i] == "undefined" || b[i] == "" )? a[i] : b[i] );
+	}
+
+	// finally join the array as a string
+	return path.join("/");
+}
+
