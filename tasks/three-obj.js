@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		// Iterate over all src-dest file pairs.
 		//this.files.forEach(function(f) {
 		async.forEach(this.files, function(f, cb) {
-			
+
 			var src = f.src.filter(function(filepath) {
 				// Warn on and remove invalid source files (if nonull was set).
 				if (!grunt.file.exists(filepath)) {
@@ -25,6 +25,14 @@ module.exports = function(grunt) {
 					return true;
 				}
 			});
+
+			// exit now if we have no src files
+			if( !src.length ){
+				var err = "No files were found in "+ f.orig.src;
+				grunt.fail.warn(err);
+				return done(err);
+			}
+			//return grunt.fail.warn(err);
 
 			// Minify files, warn and fail on error.
 			var result;
