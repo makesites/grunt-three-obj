@@ -23,7 +23,7 @@
 		"url": "http://makesites.org/licenses/MIT"
 		}
 	],
-	"main": "gruntfile.js",
+	"main": "index",
 	"engines": {
 		"node": ">= 0.8.0"
 	},
