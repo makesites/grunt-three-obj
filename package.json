@@ -1,6 +1,6 @@
 {
 	"name": "grunt-three-obj",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"author": {
 		"name": "makesites",
 		"url": "http://makesites.org/"
@@ -31,9 +31,9 @@
 		"three-obj": "*"
 	},
 	"devDependencies": {
-		"grunt": "~0.4.0"
+		"grunt": "0.4.x"
 	},
 	"peerDependencies": {
-		"grunt": "~0.4.0"
+		"grunt": "0.4.x"
 	}
 }
