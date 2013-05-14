@@ -3,7 +3,8 @@
 
 var threeOBJ = require('three-obj'),
 	fs = require('fs'),
-	path = require("path");
+	path = require("path"),
+	root = process.cwd();
 
 exports.init = function(grunt) {
 	var exports = {},
@@ -21,11 +22,12 @@ exports.init = function(grunt) {
 			// destination file
 			var source = "",
 				dest = "";
+
 			dest = findRelativePath(file, dir);
 			// find destination (error control?)
-			dest = path.normalize( __dirname +"/../../../../"+ dest.replace(/\.[^/.]+$/, ".js") );
+			dest = path.join( root, dest.replace(/\.[^/.]+$/, ".js") );
 			// normalize file path
-			source = path.normalize( __dirname +"/../../../../"+ file );
+			source = path.join( root, file );
 			// check the destination:
 			if( grunt.file.exists(dest) ){
 				// ask for overwrite confirmation?
