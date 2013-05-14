@@ -27,7 +27,7 @@ Then specify your config:
 			},
 			dist: {
 				/** @required  - string (or array of) including grunt glob variables */
-				src: ['./static/*', './media/*', './raw/*'],
+				src: ['./static/*/*.obj', './media/*/*.obj', './raw/*/*.obj'],
 				/** @optional  - if provided the converted files will be saved in this folder instead */
 				dest: './assets/'
 			}
