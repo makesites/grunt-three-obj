@@ -35,7 +35,6 @@ exports.init = function(grunt) {
 			}
 			// execute the conversion
 			if( options.minify ){
-				console.log("source", source);
 				topLevel = threeOBJ.minify(source, dest, function( data ){
 					//console.log( data );
 					grunt.log.writeln('Binary file "' + dest + '" created.');
