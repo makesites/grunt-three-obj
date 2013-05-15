@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		//gruntfile : path.normalize( __dirname+'/../gruntfile.js'), 
+		//gruntfile : path.normalize( __dirname+'/../gruntfile.js'),
 		// Before generating any new files, remove any previously-created files.
 		//clean: {
 		//	tests: ['tmp']

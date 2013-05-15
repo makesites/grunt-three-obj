@@ -1,8 +1,7 @@
 // Minify with three-obj.
 // Source: https://github.com/makesites/three-obj
 
-var threeOBJ = require('three-obj'),
-	fs = require('fs'),
+var fs = require('fs'),
 	path = require("path"),
 	root = process.cwd();
 
@@ -15,13 +14,13 @@ exports.init = function(grunt) {
 
 		grunt.verbose.write('Converting with three-obj...');
 
-		var topLevel = null;
 		// Grab and parse all source files
 		async.forEach(files, function(file, cb) {
 		//files.forEach(function(file){
 			// destination file
 			var source = "",
-				dest = "";
+				dest = "",
+				threeObj = require('three-obj')();
 
 			dest = findRelativePath(file, dir);
 			// find destination (error control?)
@@ -37,13 +36,13 @@ exports.init = function(grunt) {
 			}
 			// execute the conversion
 			if( options.minify ){
-				topLevel = threeOBJ.minify(source, dest, function( data ){
+				threeObj.minify(source, dest, function( data ){
 					//console.log( data );
 					grunt.log.writeln('Binary file "' + dest + '" created.');
 					return cb();
 				});
 			} else {
-				topLevel = threeOBJ.convert(source, dest, function( data ){
+				threeObj.convert(source, dest, function( data ){
 					//console.log( data );
 					grunt.log.writeln('Ascii file "' + dest + '" created.');
 					return cb();
