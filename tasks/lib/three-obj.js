@@ -22,7 +22,10 @@ exports.init = function(grunt) {
 				dest = "",
 				threeObj = require('three-obj')();
 
-			dest = findRelativePath(file, dir);
+			// #4 use source dir  if no dir provided
+			// (except filename:) file.replace(/[^\/]*$/, "")
+			dest = (!dir) ?  file : findRelativePath(file, dir);
+
 			// find destination (error control?)
 			dest = path.join( root, dest.replace(/\.[^/.]+$/, ".js") );
 			// normalize file path

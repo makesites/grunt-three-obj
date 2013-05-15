@@ -34,11 +34,13 @@ module.exports = function(grunt) {
 				grunt.fail.warn(err);
 				return done(err);
 			}
+			// #4 see if there;s a dest dir
+			var dest = (typeof f.dest != "undefined") ? f.dest : false;
 
 			// Minify files, warn and fail on error.
 			var result;
 			try {
-				result = threeOBJ.parse(src, f.dest, options, function(err){
+				result = threeOBJ.parse(src, dest, options, function(err){
 					grunt.log.writeln('Source "' + f.orig.src + '" parsed.');
 					if (options.report) {
 						contrib.minMaxInfo(result.min, result.max, options.report);
