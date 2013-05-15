@@ -7,6 +7,8 @@ module.exports = function(grunt) {
 
 	grunt.registerMultiTask('three_obj', 'Minify files with Three OBJ.', function() {
 		// Merge task-specific and/or target-specific options with these defaults.
+		if( !this.files.length ) return grunt.fail.warn("No source locations entered");
+		// merge options with defaults
 		var options = this.options({
 			minify: false
 		});
