@@ -5,7 +5,7 @@
 		"name": "makesites",
 		"url": "http://makesites.org/"
 	},
-	"description": "[WIP] Grunt tasks for Three OBJ",
+	"description": "Grunt tasks for Three OBJ",
 	"homepage": "https://github.com/makesites/grunt-three-obj",
 	"keywords": [
 		"gruntplugin", "three", "obj", "minify", "json"
